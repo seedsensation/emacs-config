@@ -25,10 +25,16 @@
 (use-package corfu
   :hook (prog-mode . corfu-mode))
 
+(use-package rustic
+  :after (inheritenv f))
+
 (use-package lsp-mode
   :hook ((java-mode c++-mode rustic-mode) . lsp-mode)
   :config
   (define-key lsp-mode-map (kbd "C-c C-j C-j") #'lsp-execute-code-action)
   )
+
+(use-package multi-vterm
+  :after (projectile))
 
 (provide 'package-config)

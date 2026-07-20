@@ -48,14 +48,14 @@
 (use-package corfu
   :config
   (define-keys corfu-map
-               ((kbd "m-n") #'corfu-next)
+               ((kbd "M-n") #'corfu-next)
 	       ((kbd "<backtab>") #'corfu-previous)
 	       ((kbd "<tab>") #'corfu-next)
-	       ((kbd "m-p") #'corfu-previous)
-	       ((kbd "m-<ret>") #'corfu-insert)
-	       ((kbd "c-c") #'corfu-insert)
+	       ((kbd "M-p") #'corfu-previous)
+	       ((kbd "M-<ret>") #'corfu-insert)
+	       ((kbd "C-c") #'corfu-insert)
 	       ((kbd "<escape>") #'corfu-quit)
-	       ((kbd "m-l") #'corfu-show-location))
+	       ((kbd "M-l") #'corfu-show-location))
   )
 
 (use-package avy
@@ -108,20 +108,21 @@
 			"v" #'customize-variable
 			"g" #'customize-group
 			))
-(defvar project-map (define-keymap
-		      "t" #'treemacs
-		      "e" (lambda () (interactive) (lsp-treemacs-errors-list))
-		      "x" #'projectile-compile-project
-		      "p" (lambda () (interactive)
-			    (projectile-switch-project))
-		      "l" #'lsp
-		      "v" #'vterm
-		      "V" #'multi-vterm
-		      "s" (lambda () (interactive)
-			    (lsp-treemacs-errors-list)
-			    (treemacs)
-			    (lsp))
-		      ))
+
+  (defvar project-map (define-keymap
+		        "t" #'treemacs
+		        "e" (lambda () (interactive) (lsp-treemacs-errors-list))
+		        "x" #'projectile-compile-project
+		        "p" (lambda () (interactive)
+			      (projectile-switch-project))
+		        "l" #'lsp
+		        "v" #'vterm
+		        "V" #'multi-vterm
+		        "s" (lambda () (interactive)
+			      (lsp-treemacs-errors-list)
+			      (treemacs)
+			      (lsp))
+		        ))
 
 (defvar file-map (define-keymap
                    "r" #'recentf

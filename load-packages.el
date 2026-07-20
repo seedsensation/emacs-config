@@ -1,56 +1,71 @@
 (setq packages-to-install '(
-          ace-window
-          avy
-          corfu
-          corfu-terminal
-          consult
-          dash
-          emacs-everywhere
-          envrc
-          evil
-          f
-          format-all
-          fzf
-          gdscript-mode
-          git-gutter
+          ;; Appearance
           gruvbox-theme
-          inheritenv
-          ivy
-          ivy-prescient
-          lsp-java
-          lsp-mode
-          lsp-ui
-          magit
-          magit-section
-          marginalia
-          nix-mode
-          orderless
+          git-gutter
+
+          ;; Typing
+          avy
+          evil
+          surround
+
+          ;; Org Mode
           org
           org-fragtog
           org-roam
           org-roam-timestamps
           org-roam-ui
-          ox-gfm
-          pdf-tools
+
+          ;; Window Management
+          ace-window
+
+          ;; Navigation
+          consult
+          fzf
+          ivy
+          ivy-prescient
+          marginalia
+          vertico
+
+          ;; Programming 
+          format-all
+          lsp-java
+          lsp-mode
+          lsp-ui
+          magit
+          magit-section
           projectile
-          rustic
-          simple-httpd
           smartparens
-          sqlite3
-          surround
           treemacs
           treemacs-evil
-          vertico
           multi-vterm
           vterm
-          websocket
-          yaml-mode
-          ein
-	  ))
 
+          ;; Modes
+          gdscript-mode
+          nix-mode
+          rustic
+          yaml-mode
+          
+          ;; Completion
+          corfu
+          corfu-terminal
+
+          ;; Misc
+          emacs-everywhere
+          exec-path-from-shell
+          dash
+          orderless
+          ox-gfm
+          pdf-tools
+
+          ;; Dependencies
+          f
+          inheritenv
+	  ))
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 
 (dolist (p packages-to-install)
   (package-install p))
+
 
 (provide 'load-packages)

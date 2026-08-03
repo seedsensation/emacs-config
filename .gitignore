@@ -10,3 +10,4 @@ transient
 /eln-cache
 /.lsp-session-v1
 /org-roam.db
+.\#*

@@ -19,7 +19,7 @@
 
 ;; General stuff to make things look nicer
 (load-theme 'gruvbox t)
-(set-face-attribute 'default nil :font "Maple Mono" :height 160)
+;(set-face-attribute 'default nil :font "Maple Mono" :height 160)
 (toggle-truncate-lines 1)
 
 ;; We set our basic global modes

@@ -91,8 +91,6 @@
 		     ))
 
 (defvar view-map (define-keymap
-                   "v" #'org-toggle-narrow-to-subtree
-                   "h" (lambda () (interactive) (org-cycle-hide-drawers 'all))
                    "l" #'lsp-describe-at-point
                    ))
 
@@ -109,20 +107,20 @@
 			"g" #'customize-group
 			))
 
-  (defvar project-map (define-keymap
-		        "t" #'treemacs
-		        "e" (lambda () (interactive) (lsp-treemacs-errors-list))
-		        "x" #'projectile-compile-project
-		        "p" (lambda () (interactive)
-			      (projectile-switch-project))
-		        "l" #'lsp
-		        "v" #'vterm
-		        "V" #'multi-vterm
-		        "s" (lambda () (interactive)
-			      (lsp-treemacs-errors-list)
-			      (treemacs)
-			      (lsp))
-		        ))
+(defvar project-map (define-keymap
+		      "t" #'treemacs
+		      "e" (lambda () (interactive) (lsp-treemacs-errors-list))
+		      "x" #'projectile-compile-project
+		      "p" (lambda () (interactive)
+			    (projectile-switch-project))
+		      "l" #'lsp
+		      "v" #'vterm
+		      "V" #'multi-vterm
+		      "s" (lambda () (interactive)
+			    (lsp-treemacs-errors-list)
+			    (treemacs)
+			    (lsp))
+		      ))
 
 (defvar file-map (define-keymap
                    "r" #'recentf
@@ -143,19 +141,71 @@
                      ))
 
 (use-package org
+  :after evil
   :config
   (defvar org-roam-map (define-keymap
                          "l" #'org-roam-node-insert
                          "n" #'org-id-get-create
                          "v" #'org-roam-node-visit
                          ))
+
+  (defun org-insert-latex-block () (interactive)
+         (if (texmathp) (end-of-line)
+           (progn
+             (insert "\\(\\)")
+             (backward-char 2))))
+
+  (defun insert-text-block () (interactive)
+      (progn
+        (insert "\\text{}")
+        (backward-char)))
+
+  (defun begin-end-block (text) (interactive)
+    (if (texmathp) (next-line 2)
+      (progn
+        (setq output-string (concat "\\begin{" text "}\n\n\\end{" text "}"))
+        (insert output-string)
+        (previous-line))))
+
+
   (set-local-leader-map org-mode-map "m"
-			"." #'consult-org-heading
-			"l i" #'org-id-get-create
-			"i" #'org-roam-node-insert
-			"f" #'org-roam-node-find
-			"r" #'org-id-reload-all
-			"b" #'org-mark-ring-goto))
+		        "." #'consult-org-heading
+		        "l i" #'org-id-get-create
+		        "i" #'org-roam-node-insert
+		        "f" #'org-roam-node-find
+		        "r" #'org-id-reload-all
+		        "b" #'org-mark-ring-goto
+                        "v" #'org-toggle-narrow-to-subtree
+                        "h" (lambda () (interactive) (org-cycle-hide-drawers 'all)))
+
+  (defvar latex-block-map (define-keymap
+                            "t" #'insert-text-block
+                            "e" (lambda () (interactive) (begin-end-block "equation"))
+                            "r" (lambda () (interactive) (begin-end-block "equation*"))
+                            "i" (lambda () (interactive) (begin-end-block (read-string "Enter the type of block: ")))
+                            "k" #'org-insert-latex-block
+                            ))
+
+
+  (define-keys org-mode-map
+               ((kbd "C-c C-t") #'org-todo)
+               ((kbd "C-c C-h") #'org-toggle-heading)
+               ((kbd "C-c C-,") #'org-promote-subtree)
+               ((kbd "C-c C-.") #'org-demote-subtree)
+               ((kbd "C-c C-l") org-roam-map)
+               ((kbd "C-c k") #'org-insert-latex-block)
+               ((kbd "C-c C-k") latex-block-map)
+               )
+
+
+  (evil-define-key 'normal org-mode-map (kbd "<TAB>") #'org-cycle)
+
+  )
+(use-package yasnippet
+  :after (org evil)
+  :config
+  (evil-define-key 'global org-mode-map (kbd "C-c C-s") #'yas-insert-snippet)
+  )
 
 (evil-define-key 'normal global-map (kbd "<SPC>") leader-map)
 (define-key global-map (kbd "C-c C-SPC") leader-map)

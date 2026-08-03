@@ -49,6 +49,12 @@
 			   (1+ start))))
 		(if (re-search-forward "^[ \t]*:END:" limit t)
 		    (outline-flag-region start (line-end-position) t)
-		                    (user-error msg))))))))))
+		  (user-error msg))))))))))
+
+
+(defun reload-all-keybinds()
+  (interactive)
+  (load-file "~/.emacs.d/keybinds.el"))
+
 
 (provide 'functions)

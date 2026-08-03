@@ -6,6 +6,7 @@
   )
 
 (use-package org
+  :after corfu
   :init
   (setq org-roam-directory (file-truename "~/org")
         org-id-locations-file (expand-file-name ".org-id-locations" org-roam-directory)
@@ -19,8 +20,14 @@
   (defun org-mode-enable ()
     (org-fragtog-mode 1)
     (org-indent-mode 1)
-    (org-roam-db-autosync-mode 1))
-  :hook (org-mode . org-mode-enable))
+    (org-roam-db-autosync-mode 1)
+    (corfu-mode -1)
+    )
+  :hook (org-mode . org-mode-enable)
+  :config
+  (setq org-format-latex-options (plist-put org-format-latex-options ':scale 1.5))
+
+  )
 
 (use-package corfu
   :hook (prog-mode . corfu-mode))
@@ -36,5 +43,22 @@
 
 (use-package multi-vterm
   :after (projectile))
+
+(use-package key-chord
+  :after (org)
+  :init
+  (key-chord-mode 1)
+  :config
+                                        ;(key-chord-define org-mode-map "hl" 'org-insert-latex-brace)
+  )
+
+(use-package yasnippet
+  :after (org evil)
+  :init
+                                        ;:hook ((org-mode) . yas-minor-mode)
+  :config
+  (yas-reload-all)
+  (yas-global-mode 1)
+  )
 
 (provide 'package-config)

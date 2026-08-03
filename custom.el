@@ -6,6 +6,7 @@
  ;; If there is more than one, they won't work right.
  '(corfu-auto t)
  '(lsp-auto-execute-action nil)
+ '(ns-right-alternate-modifier 'control)
  '(package-selected-packages nil)
  '(truncate-lines t))
 (custom-set-faces

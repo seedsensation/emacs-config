@@ -6,7 +6,9 @@
           ;; Typing
           avy
           evil
+          key-chord
           surround
+          yasnippet
 
           ;; Org Mode
           org
@@ -51,6 +53,7 @@
           corfu-terminal
 
           ;; Misc
+          auctex
           emacs-everywhere
           exec-path-from-shell
           dash

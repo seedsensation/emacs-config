@@ -1,14 +1,14 @@
 (setq packages-to-install '(
-			    ;; Appearance
+                            ;; Appearance
 			    gruvbox-theme
 			    git-gutter
 
-          ;; Typing
-          avy
-          evil
-          key-chord
-          surround
-          yasnippet
+                            ;; Typing
+                            avy
+                            evil
+                            key-chord
+                            surround
+                            yasnippet
 
 			    ;; Org Mode
 			    org
@@ -53,6 +53,7 @@
 			    corfu-terminal
 
 			    ;; Misc
+                            auctex
 			    emacs-everywhere
 			    exec-path-from-shell
 			    dash

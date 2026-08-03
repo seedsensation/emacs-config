@@ -168,16 +168,6 @@
         (previous-line))))
 
 
-  (set-local-leader-map org-mode-map "m"
-		        "." #'consult-org-heading
-		        "l i" #'org-id-get-create
-		        "i" #'org-roam-node-insert
-		        "f" #'org-roam-node-find
-		        "r" #'org-id-reload-all
-		        "b" #'org-mark-ring-goto
-                        "v" #'org-toggle-narrow-to-subtree
-                        "h" (lambda () (interactive) (org-cycle-hide-drawers 'all)))
-
   (defvar latex-block-map (define-keymap
                             "t" #'insert-text-block
                             "e" (lambda () (interactive) (begin-end-block "equation"))
@@ -193,10 +183,20 @@
                ((kbd "C-c C-,") #'org-promote-subtree)
                ((kbd "C-c C-.") #'org-demote-subtree)
                ((kbd "C-c C-l") org-roam-map)
-               ((kbd "C-c k") #'org-insert-latex-block)
-               ((kbd "C-c C-k") latex-block-map)
+               ((kbd "C-c ;") #'org-insert-latex-block)
+               ((kbd "C-c C-;") latex-block-map)
                )
 
+
+  (set-local-leader-map org-mode-map "m"
+		        "." #'consult-org-heading
+		        "l i" #'org-id-get-create
+		        "i" #'org-roam-node-insert
+		        "f" #'org-roam-node-find
+		        "r" #'org-id-reload-all
+		        "b" #'org-mark-ring-goto
+                        "v" #'org-toggle-narrow-to-subtree
+                        "h" (lambda () (interactive) (org-cycle-hide-drawers 'all)))
 
   (evil-define-key 'normal org-mode-map (kbd "<TAB>") #'org-cycle)
 

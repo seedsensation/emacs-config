@@ -167,6 +167,14 @@
         (insert output-string)
         (previous-line))))
 
+  (defun create-new-heading () (interactive)
+         (end-of-line)
+         (org-toggle-heading t)
+         (if (>= (prefix-numeric-value current-prefix-arg) 4) () (org-todo))
+         (insert "\n")
+         (if (>= (prefix-numeric-value current-prefix-arg) 16) () (org-id-get-create)))
+         
+
 
   (defvar latex-block-map (define-keymap
                             "t" #'insert-text-block
@@ -185,6 +193,7 @@
                ((kbd "C-c C-l") org-roam-map)
                ((kbd "C-c ;") #'org-insert-latex-block)
                ((kbd "C-c C-;") latex-block-map)
+               ((kbd "C-c C-'") #'create-new-heading)
                )
 
 

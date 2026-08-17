@@ -7,6 +7,7 @@
  '(corfu-auto t)
  '(lsp-auto-execute-action nil)
  '(ns-right-alternate-modifier 'control)
+ '(package-selected-packages nil)
  '(truncate-lines t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

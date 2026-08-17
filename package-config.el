@@ -8,6 +8,9 @@
 (use-package org
   :after corfu
   :init
+  :hook (org-mode . org-mode-enable)
+  :config
+  (setq org-format-latex-options (plist-put org-format-latex-options ':scale 1.5))
   (setq org-roam-directory (file-truename "~/org")
         org-id-locations-file (expand-file-name ".org-id-locations" org-roam-directory)
         org-roam-db-location (expand-file-name "org-roam-db" org-roam-directory))
@@ -23,10 +26,6 @@
     (org-roam-db-autosync-mode 1)
     (corfu-mode -1)
     )
-  :hook (org-mode . org-mode-enable)
-  :config
-  (setq org-format-latex-options (plist-put org-format-latex-options ':scale 1.5))
-
   )
 
 (use-package corfu

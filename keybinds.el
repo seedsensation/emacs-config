@@ -150,22 +150,34 @@
                          ))
 
   (defun org-insert-latex-block () (interactive)
-         (if (texmathp) (end-of-line)
+         (if (texmathp)
+             (if (looking-at-p "\\\\)")
+                 (forward-char 2)
+               (insert "\\)"))
            (progn
              (insert "\\(\\)")
              (backward-char 2))))
 
   (defun insert-text-block () (interactive)
-      (progn
-        (insert "\\text{}")
-        (backward-char)))
+         (if (texmathp)
+             (progn
+               (insert "\\text{}")
+               (backward-char))
+           (if (looking-at-p "}")
+               (forward-char 1)
+             (insert "}"))
+           ))
+
+  (defun quick-matrix () (interactive)
+         (insert "\\begin{matrix}\n\n\\end{matrix}")
+         (previous-line))
 
   (defun begin-end-block (text) (interactive)
-    (if (texmathp) (next-line 2)
-      (progn
-        (setq output-string (concat "\\begin{" text "}\n\n\\end{" text "}"))
-        (insert output-string)
-        (previous-line))))
+         (if (texmathp) (next-line 2)
+           (progn
+             (setq output-string (concat "\\begin{" text "}\n\n\\end{" text "}"))
+             (insert output-string)
+             (previous-line))))
 
   (defun create-new-heading () (interactive)
          (end-of-line)
@@ -173,14 +185,17 @@
          (if (>= (prefix-numeric-value current-prefix-arg) 4) () (org-todo))
          (insert "\n")
          (if (>= (prefix-numeric-value current-prefix-arg) 16) () (org-id-get-create)))
-         
+
 
 
   (defvar latex-block-map (define-keymap
                             "t" #'insert-text-block
-                            "e" (lambda () (interactive) (begin-end-block "equation"))
-                            "r" (lambda () (interactive) (begin-end-block "equation*"))
+                            "e" (lambda () (interactive) (begin-end-block "equation*"))
+                            "E" (lambda () (interactive) (begin-end-block "equation"))
+                            "r" (lambda () (interactive) (begin-end-block "equation"))
                             "i" (lambda () (interactive) (begin-end-block (read-string "Enter the type of block: ")))
+                            "a" (lambda () (interactive) (begin-end-block "align*"))
+                            "m" #'quick-matrix
                             "k" #'org-insert-latex-block
                             ))
 
@@ -196,6 +211,11 @@
                ((kbd "C-c C-'") #'create-new-heading)
                )
 
+  (evil-define-key 'insert org-mode-map (kbd "<insert>") #'org-insert-latex-block)
+  (evil-define-key 'insert org-mode-map (kbd "S-<insert>") #'insert-text-block)
+  (evil-define-key 'insert org-mode-map (kbd "M-<insert>") (lambda () (interactive) (begin-end-block "equation*")))
+
+
 
   (set-local-leader-map org-mode-map "m"
 		        "." #'consult-org-heading
@@ -208,7 +228,6 @@
                         "h" (lambda () (interactive) (org-cycle-hide-drawers 'all)))
 
   (evil-define-key 'normal org-mode-map (kbd "<TAB>") #'org-cycle)
-
   )
 (use-package yasnippet
   :after (org evil)

@@ -7,7 +7,14 @@
  '(corfu-auto t)
  '(lsp-auto-execute-action nil)
  '(ns-right-alternate-modifier 'control)
- '(package-selected-packages nil)
+ '(package-selected-packages
+   '(auctex citeproc consult corfu-terminal emacs-everywhere
+            exec-path-from-shell format-all fzf gdscript-mode
+            git-gutter gruvbox-theme ivy-prescient key-chord lsp-java
+            lsp-ui magit marginalia multi-vterm nix-mode orderless
+            org-fragtog org-roam-timestamps org-roam-ui ox-gfm
+            pdf-tools projectile rustic smartparens surround
+            treemacs-evil vertico yaml-mode yasnippet))
  '(truncate-lines t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

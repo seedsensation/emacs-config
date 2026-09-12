@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 
 
 (use-package evil
@@ -6,7 +7,7 @@
   )
 
 (use-package org
-  :after corfu
+  ;;:after corfu
   :init
   :hook (org-mode . org-mode-enable)
   :config
@@ -24,12 +25,12 @@
     (org-fragtog-mode 1)
     (org-indent-mode 1)
     (org-roam-db-autosync-mode 1)
-    (corfu-mode -1)
+    ;(corfu-mode -1)
     )
   )
 
-(use-package corfu
-  :hook (prog-mode . corfu-mode))
+;(use-package corfu
+;  :hook (prog-mode . corfu-mode))
 
 (use-package rustic
   :after (inheritenv f))

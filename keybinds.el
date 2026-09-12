@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (require 'load-packages)
 
 ;; I FUCKING LOVE MACROS
@@ -16,7 +17,7 @@
 	 map))))
 ;; Non-package specific keybinds
 (define-key prog-mode-map
-            (kbd "<backtab>") #'completion-at-point)
+            (kbd "<backtab>") #'company-complete)
 
 (keymap-global-set "C-x C-<up>" 'buffer-menu)
 (keymap-global-set "C-x <up>" 'buffer-menu)
@@ -45,18 +46,18 @@
   (evil-define-key 'normal rustic-popup-mode-map (kbd "q") #'delete-window)
   )
 
-(use-package corfu
-  :config
-  (define-keys corfu-map
-               ((kbd "M-n") #'corfu-next)
-	       ((kbd "<backtab>") #'corfu-previous)
-	       ((kbd "<tab>") #'corfu-next)
-	       ((kbd "M-p") #'corfu-previous)
-	       ((kbd "M-<ret>") #'corfu-insert)
-	       ((kbd "C-c") #'corfu-insert)
-	       ((kbd "<escape>") #'corfu-quit)
-	       ((kbd "M-l") #'corfu-show-location))
-  )
+;(use-package corfu
+;  :config
+;  (define-keys corfu-map
+;               ((kbd "M-n") #'corfu-next)
+;	       ((kbd "<backtab>") #'corfu-previous)
+;	       ((kbd "<tab>") #'corfu-next)
+;	       ((kbd "M-p") #'corfu-previous)
+;	       ((kbd "M-<ret>") #'corfu-insert)
+;	       ((kbd "C-c") #'corfu-insert)
+;	       ((kbd "<escape>") #'corfu-quit)
+;	       ((kbd "M-l") #'corfu-show-location))
+;  )
 
 (use-package avy
   :after (evil)
@@ -205,10 +206,11 @@
                ((kbd "C-c C-h") #'org-toggle-heading)
                ((kbd "C-c C-,") #'org-promote-subtree)
                ((kbd "C-c C-.") #'org-demote-subtree)
-               ((kbd "C-c C-l") org-roam-map)
+               ((kbd "C-c C-o") org-roam-map)
                ((kbd "C-c ;") #'org-insert-latex-block)
                ((kbd "C-c C-;") latex-block-map)
                ((kbd "C-c C-'") #'create-new-heading)
+               ((kbd "C-c C-L") #'insert-link-to-heading)
                )
 
   (evil-define-key 'insert org-mode-map (kbd "<insert>") #'org-insert-latex-block)

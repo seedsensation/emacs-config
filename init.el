@@ -4,6 +4,7 @@
 (load-file "~/.emacs.d/package-config.el")
 (load-file "~/.emacs.d/functions.el")
 (load-file "~/.emacs.d/keybinds.el")
+(load-file "~/.emacs.d/custom.el")
 
 ;; First, we set basic configs - relative line numbers, silenced sound effects,
 ;; autocomplete, etc.
@@ -28,7 +29,8 @@
 (evil-mode 1)
 (vertico-mode 1)
 (ivy-mode 1)
-(global-corfu-mode 1)
+;(global-corfu-mode 1)
+(global-company-mode 1)
 (ivy-prescient-mode 1)
 (org-roam-db-autosync-mode 1)
 (which-key-mode 1)
@@ -57,7 +59,7 @@
 (when (daemonp)
   (exec-path-from-shell-initialize))
 
-(load-file "~/.emacs.d/custom.el")
+;(load-file "~/.emacs.d/custom.el")
 
 (require 'package-config)
 (require 'functions)

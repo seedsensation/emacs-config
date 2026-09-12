@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (setq packages-to-install '(
                             ;; Appearance
 			    gruvbox-theme
@@ -49,8 +50,7 @@
 			    yaml-mode
 
 			    ;; Completion
-			    corfu
-			    corfu-terminal
+                            company
 
 			    ;; Misc
                             auctex

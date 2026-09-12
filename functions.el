@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 
 (defun +evil/window-split-and-follow()
   "Split current window horizontally, then focus on new window.
@@ -55,6 +56,13 @@
 (defun reload-all-keybinds()
   (interactive)
   (load-file "~/.emacs.d/keybinds.el"))
+
+(defun insert-link-to-heading () (interactive)
+       (let ((heading (read-string "Heading: "))
+             (desc (read-string "Description: ")))
+         (insert (concat "[[*" heading "]["
+                         (if (= (length desc) 0) heading desc)
+                         "]]"))))
 
 
 (provide 'functions)

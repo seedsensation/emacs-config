@@ -6,38 +6,51 @@
  ;; If there is more than one, they won't work right.
  '(lsp-auto-execute-action nil)
  '(lsp-completion-provider :capf)
- '(package-selected-packages
-   '(auctex citeproc company consult emacs-everywhere
-            exec-path-from-shell format-all fzf gdscript-mode
-            git-gutter gruvbox-theme ivy-prescient key-chord lsp-java
-            lsp-ui magit marginalia multi-vterm nix-mode orderless
-            org-fragtog org-roam-timestamps org-roam-ui ox-gfm
-            pdf-tools popon projectile rustic smartparens surround
-            treemacs-evil vertico yaml-mode yasnippet))
+ '(org-latex-classes
+   '(("article" "\\documentclass[11pt]{article}"
+      ("\\section{%s}" . "\\section*{%s}")
+      ("\\subsection{%s}" . "\\subsection*{%s}")
+      ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+      ("\\paragraph{%s}" . "\\paragraph*{%s}")
+      ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))
+     ("report" "\\documentclass[11pt]{report}"
+      ("\\part{%s}" . "\\part*{%s}")
+      ("\\chapter{%s}" . "\\chapter*{%s}")
+      ("\\section{%s}" . "\\section*{%s}")
+      ("\\subsection{%s}" . "\\subsection*{%s}")
+      ("\\subsubsection{%s}" . "\\subsubsection*{%s}"))
+     ("book" "\\documentclass[11pt, oneside]{book}"
+      ("\\part{%s}" . "\\part*{%s}")
+      ("\\chapter{%s}" . "\\chapter*{%s}")
+      ("\\section{%s}" . "\\section*{%s}")
+      ("\\subsection{%s}" . "\\subsection*{%s}")
+      ("\\subsubsection{%s}" . "\\subsubsection*{%s}"))))
+ '(org-latex-src-block-backend 'listings)
+ '(package-selected-packages nil)
  '(truncate-lines t)
  '(warning-suppress-log-types
    '((files missing-lexbind-cookie
-            "/usr/share/emacs/site-lisp/site-start.d/asy-init.el")
+	    "/usr/share/emacs/site-lisp/site-start.d/asy-init.el")
      (files missing-lexbind-cookie
-            "/usr/share/emacs/site-lisp/site-start.d/rpmdev-init.el")
+	    "/usr/share/emacs/site-lisp/site-start.d/rpmdev-init.el")
      (files missing-lexbind-cookie
-            "/usr/share/emacs/site-lisp/site-start.d/cmake-init.el")
+	    "/usr/share/emacs/site-lisp/site-start.d/cmake-init.el")
      (files missing-lexbind-cookie
-            "/usr/share/emacs/site-lisp/site-start.d/asy-init.el")
+	    "/usr/share/emacs/site-lisp/site-start.d/asy-init.el")
      (files missing-lexbind-cookie)))
  '(warning-suppress-types
    '((files missing-lexbind-cookie
-            "/usr/share/emacs/site-lisp/site-start.d/rpmdev-init.el")
+	    "/usr/share/emacs/site-lisp/site-start.d/rpmdev-init.el")
      (files missing-lexbind-cookie
-            "/usr/share/emacs/site-lisp/site-start.d/cmake-init.el")
+	    "/usr/share/emacs/site-lisp/site-start.d/cmake-init.el")
      (files missing-lexbind-cookie
-            "/usr/share/emacs/site-lisp/site-start.d/asy-init.el")
+	    "/usr/share/emacs/site-lisp/site-start.d/asy-init.el")
      (files missing-lexbind-cookie
-            "/usr/share/emacs/site-lisp/site-start.d/rpmdev-init.el")
+	    "/usr/share/emacs/site-lisp/site-start.d/rpmdev-init.el")
      (files missing-lexbind-cookie
-            "/usr/share/emacs/site-lisp/site-start.d/cmake-init.el")
+	    "/usr/share/emacs/site-lisp/site-start.d/cmake-init.el")
      (files missing-lexbind-cookie
-            "/usr/share/emacs/site-lisp/site-start.d/asy-init.el"))))
+	    "/usr/share/emacs/site-lisp/site-start.d/asy-init.el"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

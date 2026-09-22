@@ -29,7 +29,7 @@
 (evil-mode 1)
 (vertico-mode 1)
 (ivy-mode 1)
-;(global-corfu-mode 1)
+                                        ;(global-corfu-mode 1)
 (global-company-mode 1)
 (ivy-prescient-mode 1)
 (org-roam-db-autosync-mode 1)
@@ -44,11 +44,11 @@
 
 
 (defun prog-mode-enable ()
-    (display-line-numbers-mode 1)
-    (setq display-line-numbers 'relative)
-    (indent-tabs-mode 0)
-    (format-all-mode 1)
-)
+  (display-line-numbers-mode 1)
+  (setq display-line-numbers 'relative)
+  (indent-tabs-mode 0)
+  (format-all-mode 1)
+  )
 
 (add-hook 'prog-mode-hook 'prog-mode-enable)
 
@@ -59,7 +59,11 @@
 (when (daemonp)
   (exec-path-from-shell-initialize))
 
-;(load-file "~/.emacs.d/custom.el")
+                                        ;(load-file "~/.emacs.d/custom.el")
+
+(require 'ox-latex)
+(add-to-list 'org-latex-packages-alist '("" "listings"))
+(add-to-list 'org-latex-packages-alist '("" "color"))
 
 (require 'package-config)
 (require 'functions)

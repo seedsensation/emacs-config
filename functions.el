@@ -63,6 +63,9 @@
          (insert (concat "[[*" heading "]["
                          (if (= (length desc) 0) heading desc)
                          "]]"))))
+(defun insert-link-to-heading-no-description () (interactive)
+       (let ((heading (read-string "Heading: ")))
+         (insert (concat "[[*" heading "][" heading "]]"))))
 
 
 (provide 'functions)

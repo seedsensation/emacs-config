@@ -1,5 +1,6 @@
 ;; -*- lexical-binding: t; -*-
 (require 'load-packages)
+(require 'modes)
 
 ;; I FUCKING LOVE MACROS
 (defmacro define-keys (dest-map &rest args)
@@ -214,9 +215,15 @@
                ((kbd "M-;") #'org-insert-latex-block)
                ((kbd "M-'") latex-block-map)
                ((kbd "M-[") #'org-insert-latex-block)
+               ((kbd "M-{") latex-block-map)
                ((kbd "M-#") #'org-roam-node-find)
                ((kbd "M-]") #'org-roam-node-insert)
+               ((kbd "M-p") #'university-org-mode)
                )
+  (define-keys university-org-mode-map
+               ((kbd "M-[") #'org-insert-latex-block)
+               )
+               
 
   (evil-define-key 'insert org-mode-map (kbd "<insert>") #'org-insert-latex-block)
   (evil-define-key 'insert org-mode-map (kbd "S-<insert>") #'insert-text-block)

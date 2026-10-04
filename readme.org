@@ -1,0 +1,17 @@
+#+title: Emacs Org Mode Config
+* Todo List
+** TODO Custom sub-modes for Org
+I need a mode for university work, and another node for easy taking notes with heavy amounts of links.
+
+I can create custom functions that can be used in both, but i need a mode to rearrange the keybinds depending on what I'm currently working on.
+** TODO Create Header Function
+This is for university mode specifically.
+I need a function that:
+- creates a new heading
+- gives it an ID
+- prompts for the name of the heading (NAME)
+- prompts for the subtitle (SUBTITLE)
+- names the heading "#NAME (#SUBTITLE)"
+- gives it a roam alias of just #NAME
+
+Also add a universal argument option that will make it apply that to the current heading?

@@ -1,6 +1,7 @@
 ;;; -*- lexical-binding: t -*-
 
 (load-file "~/.emacs.d/load-packages.el")
+(load-file "~/.emacs.d/modes.el")
 (load-file "~/.emacs.d/package-config.el")
 (load-file "~/.emacs.d/functions.el")
 (load-file "~/.emacs.d/keybinds.el")

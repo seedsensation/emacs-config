@@ -42,6 +42,7 @@
 			    treemacs-evil
 			    multi-vterm
 			    vterm
+                            cmake-mode
 
 			    ;; Modes
 			    gdscript-mode

@@ -188,6 +188,17 @@
          (insert "\n")
          (if (>= (prefix-numeric-value current-prefix-arg) 16) () (org-id-get-create)))
 
+  (defun create-new-university-heading () (interactive)
+         (let ((header-name (read-string "Enter the name of the heading: ")) (module-name (if (boundp 'module) module (read-string "Enter the name of the module: "))))
+           (org-insert-heading-respect-content)
+           (insert header-name)
+           (org-id-get-create)
+           (next-line 2)
+           (org-roam-alias-add (concat header-name " (" module-name ")"))
+           (save-buffer)
+           (org-roam-db-sync)))
+
+
 
 
   (defvar latex-block-map (define-keymap
@@ -219,9 +230,11 @@
                ((kbd "M-#") #'org-roam-node-find)
                ((kbd "M-]") #'org-roam-node-insert)
                ((kbd "M-p") #'university-org-mode)
+               ((kbd "M-,") #'org-roam-alias-add)
                )
   (define-keys university-org-mode-map
                ((kbd "M-[") #'org-insert-latex-block)
+               ((kbd "M-/") #'create-new-university-heading)
                )
                
 

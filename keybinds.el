@@ -38,7 +38,7 @@
   :after (evil)
   :init
   (evil-define-key 'normal treemacs-mode-map (kbd "<TAB>") #'treemacs-TAB-action)
-  (evil-define-key 'normal treemacs-mdoe-map (kbd "<RET>") #'treemacs-RET-action)
+  (evil-define-key 'normal treemacs-mode-map (kbd "<RET>") #'treemacs-RET-action)
   )
 
 (use-package rustic
@@ -136,6 +136,7 @@
                      "c" customize-map
                      "d" config-map
                      "f" file-map
+                     "g" #'magit-status
                      "h" help-map
                      "p" project-map
                      "v" view-map
@@ -238,9 +239,9 @@
                )
                
 
-  (evil-define-key 'insert org-mode-map (kbd "<insert>") #'org-insert-latex-block)
-  (evil-define-key 'insert org-mode-map (kbd "S-<insert>") #'insert-text-block)
-  (evil-define-key 'insert org-mode-map (kbd "M-<insert>") (lambda () (interactive) (begin-end-block "equation*")))
+  ;(evil-define-key 'insert university-org-mode-map (kbd "<insert>") #'org-insert-latex-block)
+  ;(evil-define-key 'insert org-mode-map (kbd "S-<insert>") #'insert-text-block)
+  ;(evil-define-key 'insert org-mode-map (kbd "M-<insert>") (lambda () (interactive) (begin-end-block "equation*")))
 
 
 
